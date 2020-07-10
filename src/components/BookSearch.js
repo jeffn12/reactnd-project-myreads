@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+
+/*
+ *   BookSearch Class - component for the search page
+ */
 
 export class BookSearch extends Component {
   render() {

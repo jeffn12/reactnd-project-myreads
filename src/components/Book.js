@@ -1,7 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+// Components
+import ShelfSelector from "./ShelfSelector";
 
-import ShelfSelector from './ShelfSelector';
+/*
+ *   Book - functional component that represents an individual book
+ */
 
 const Book = (props) => {
   return (

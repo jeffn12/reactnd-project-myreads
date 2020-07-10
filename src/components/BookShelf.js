@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import Book from "./Book.js";
 
@@ -7,6 +8,11 @@ import Book from "./Book.js";
  */
 
 export class BookShelf extends Component {
+  static propTypes = {
+    shelfName: PropTypes.string.isRequired,
+    books: PropTypes.array.isRequired
+  };
+
   render() {
     return (
       <div className="bookshelf">

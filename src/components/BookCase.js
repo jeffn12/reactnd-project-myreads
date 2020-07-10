@@ -1,7 +1,13 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 // Components
 import BookShelf from "./BookShelf";
 
+/*
+ *   BookCase Class - component that represents the book shelf.  The bookcase holds multiple shelves.
+ */
+
+// Temporary book data
 const books = [
   {
     author: "Harper Lee",
@@ -48,6 +54,10 @@ const books = [
 ];
 
 export class BookCase extends Component {
+  static propTypes = {
+    shelves: PropTypes.array.isRequired
+  };
+
   getBooks = (shelf) => books.filter((book) => shelf.shelf === book.shelf);
 
   render() {

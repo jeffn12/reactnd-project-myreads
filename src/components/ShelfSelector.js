@@ -1,4 +1,8 @@
-import React from 'react';
+import React from "react";
+
+/*
+ *   ShelfSelector - functional component for choosing which shelf a book belongs on
+ */
 
 export default function ShelfSelector() {
   return (
