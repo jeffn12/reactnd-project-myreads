@@ -18,20 +18,30 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false,
     books: [],
-    bookShelves: ["Currently Reading", "Want To Read", "Read"]
+    bookShelves: ["Currently Reading", "Want To Read", "Read"] // Here for future improvements... TODO: add ability to create new shelves
   };
 
-  componentDidMount = () => {
+  updateBook = (book, newShelf) => {
+    BooksAPI.update(book, newShelf);
+    this.refreshBookList();
+  };
+
+  refreshBookList = () => {
     BooksAPI.getAll().then((res) => {
       this.setState(() => ({
         books: res.map((book) => ({
           title: book.title,
           author: book.authors.join(", "),
           url: book.imageLinks.thumbnail,
-          shelf: book.shelf
+          shelf: book.shelf,
+          id: book.id
         }))
       }));
     });
+  };
+
+  componentDidMount = () => {
+    this.refreshBookList();
   };
 
   render() {
@@ -43,7 +53,11 @@ class BooksApp extends React.Component {
         {this.state.showSearchPage ? (
           <BookSearch />
         ) : (
-          <BookCase books={this.state.books} shelves={this.state.bookShelves} />
+          <BookCase
+            books={this.state.books}
+            shelves={this.state.bookShelves}
+            updateBook={this.updateBook}
+          />
         )}
       </div>
     );

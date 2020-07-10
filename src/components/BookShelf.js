@@ -25,7 +25,9 @@ export class BookShelf extends Component {
                 author={book.author}
                 url={book.url}
                 shelf={this.props.shelfName}
+                id={book.id}
                 key={book.title}
+                updateBook={this.props.updateBook}
               />
             ))}
           </ol>

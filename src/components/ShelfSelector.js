@@ -13,7 +13,10 @@ const ShelfSelector = (props) => {
 
   return (
     <div className="book-shelf-changer">
-      <select value={getShelfName()} readOnly>
+      <select
+        value={getShelfName()}
+        onChange={(e) => props.updateBook(e.target.value)}
+      >
         <option value="move" disabled>
           Move to...
         </option>

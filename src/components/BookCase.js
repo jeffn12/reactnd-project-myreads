@@ -28,6 +28,7 @@ export class BookCase extends Component {
                 shelfName={shelf}
                 books={this.getBooks(shelf)}
                 key={shelf}
+                updateBook={this.props.updateBook}
               />
             ))}
           </div>

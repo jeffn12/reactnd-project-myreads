@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 // Components
 import ShelfSelector from "./ShelfSelector";
 
+import * as BooksAPI from "../BooksAPI";
+
 /*
  *   Book - functional component that represents an individual book
  */
@@ -19,7 +21,10 @@ const Book = (props) => {
             backgroundImage: `url(${props.url})`
           }}
         />
-        <ShelfSelector shelf={props.shelf} />
+        <ShelfSelector
+          shelf={props.shelf}
+          updateBook={(newShelf) => props.updateBook(props, newShelf)}
+        />
       </div>
       <div className="book-title">{props.title}</div>
       <div className="book-authors">{props.author}</div>
