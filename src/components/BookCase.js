@@ -37,7 +37,7 @@ export class BookCase extends Component {
           </div>
         </div>
         <div className="open-search">
-          <Link to="/search"><button></button></Link>
+          <Link to="/search"><button>Search</button></Link>
         </div>
       </div>
     );
