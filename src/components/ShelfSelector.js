@@ -2,12 +2,18 @@ import React from "react";
 
 /*
  *   ShelfSelector - functional component for choosing which shelf a book belongs on
+ *
+ *  Note:  input selector is currently set to readOnly to alleviate browser warning
  */
 
-const ShelfSelector = () => {
+const ShelfSelector = (props) => {
+  const getShelfName = () =>
+    props.shelf.charAt(0).toLowerCase() +
+    props.shelf.slice(1).replace(/ /g, "");
+
   return (
     <div className="book-shelf-changer">
-      <select>
+      <select value={getShelfName()} readOnly>
         <option value="move" disabled>
           Move to...
         </option>

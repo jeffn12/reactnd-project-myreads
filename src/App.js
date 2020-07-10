@@ -18,7 +18,7 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false,
     books: [],
-    bookShelves: ["Currently Reading", "Want to Read", "Read"]
+    bookShelves: ["Currently Reading", "Want To Read", "Read"]
   };
 
   componentDidMount = () => {

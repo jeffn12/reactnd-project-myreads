@@ -19,7 +19,7 @@ const Book = (props) => {
             backgroundImage: `url(${props.url})`
           }}
         />
-        <ShelfSelector />
+        <ShelfSelector shelf={props.shelf} />
       </div>
       <div className="book-title">{props.title}</div>
       <div className="book-authors">{props.author}</div>
