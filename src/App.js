@@ -15,7 +15,6 @@ class BooksApp extends React.Component {
 
   // API call to update a book to a new shelf, then refresh the book list to update state
   updateBook = (book, newShelf) => {
-    console.log(`Updating ${book.id} --> ${newShelf}`);
     BooksAPI.update(book, newShelf).then((res) => this.refreshBookList());
   };
 

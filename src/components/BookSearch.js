@@ -26,15 +26,6 @@ export class BookSearch extends Component {
     this.getResults(query);
   };
 
-  // Parse the book results from JSON and return a usable array
-  parseBookInfo = (books) => {
-    let bookArray = [];
-    for (let book in books) {
-      bookArray = [...bookArray, books[book]];
-    }
-    return bookArray;
-  };
-
   getResults = (query) => {
     query !== ""
       ? BooksAPI.search(query)
@@ -49,7 +40,7 @@ export class BookSearch extends Component {
                     url: book.imageLinks
                       ? book.imageLinks.thumbnail
                       : "No_Cover.jpg",
-                    shelf: book.shelf || "none",
+                    shelf: this.getCurrentShelf(book),
                     id: book.id
                   }))
                 }))
@@ -64,7 +55,14 @@ export class BookSearch extends Component {
   };
 
   // Take in a book object and check it against the library to find out if it is on a shelf
-  getCurrentShelf = (book) => {
+  getCurrentShelf = (bookToCheck) => {
+    let inLib = this.props.books.filter((book) => {
+      console.log(book);
+      return book.id === bookToCheck.id;
+    });
+    //console.log(inLib, inLib[0]);
+    return inLib.length === 0 ? "none" : inLib[0].shelf;
+
     //return shelf name (or "none")
   };
 
@@ -87,7 +85,6 @@ export class BookSearch extends Component {
         <div className="search-books-results">
           {this.state.results.length > 0 && (
             <BookShelf
-              shelfName="Search Results:"
               books={this.state.results}
               updateBook={this.props.updateBook}
             />
