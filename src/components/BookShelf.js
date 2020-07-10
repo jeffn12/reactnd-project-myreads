@@ -21,7 +21,6 @@ export class BookShelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {this.props.books.map((book) => {
-              //console.log(book);
               return (
                 <Book
                   title={book.title}

@@ -54,16 +54,10 @@ export class BookSearch extends Component {
         }));
   };
 
-  // Take in a book object and check it against the library to find out if it is on a shelf
+  // Take in a book object and check it against the user library to find out what shelf it is on
   getCurrentShelf = (bookToCheck) => {
-    let inLib = this.props.books.filter((book) => {
-      console.log(book);
-      return book.id === bookToCheck.id;
-    });
-    //console.log(inLib, inLib[0]);
+    let inLib = this.props.books.filter((book) => book.id === bookToCheck.id);
     return inLib.length === 0 ? "none" : inLib[0].shelf;
-
-    //return shelf name (or "none")
   };
 
   render() {

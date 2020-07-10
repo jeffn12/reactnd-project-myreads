@@ -12,7 +12,6 @@ const ShelfSelector = (props) => {
     let shelfName =
       props.shelf.charAt(0).toLowerCase() +
       props.shelf.slice(1).replace(/ /g, "");
-    console.log("ShelfName", shelfName);
     return shelfName === "searchResults:" ? "none" : shelfName;
   };
 
