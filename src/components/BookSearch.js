@@ -12,6 +12,7 @@ import * as BooksAPI from "../BooksAPI";
 
 export class BookSearch extends Component {
   static propTypes = {
+    books: PropTypes.array.isRequired,
     updateBook: PropTypes.func.isRequired
   };
 
@@ -60,6 +61,11 @@ export class BookSearch extends Component {
       : this.setState(() => ({
           results: []
         }));
+  };
+
+  // Take in a book object and check it against the library to find out if it is on a shelf
+  getCurrentShelf = (book) => {
+    //return shelf name (or "none")
   };
 
   render() {

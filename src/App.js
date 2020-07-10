@@ -46,7 +46,7 @@ class BooksApp extends React.Component {
           <h1>MyReads</h1>
         </div>
         <Route path="/search">
-          <BookSearch updateBook={this.updateBook} />
+          <BookSearch books={this.state.books} updateBook={this.updateBook} />
         </Route>
         <Route exact path="/">
           <BookCase
