@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from 'react-router-dom';
+import { Route } from "react-router-dom";
 // Components
 import BookSearch from "./components/BookSearch";
 import BookCase from "./components/BookCase";
@@ -45,17 +45,16 @@ class BooksApp extends React.Component {
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-          <Route path="/search">
-            <BookSearch />
-          </Route>
-          <Route exact path ="/">
-            <BookCase
-              books={this.state.books}
-              shelves={this.state.bookShelves}
-              updateBook={this.updateBook}
-            />
-          </Route>
-        
+        <Route path="/search">
+          <BookSearch />
+        </Route>
+        <Route exact path="/">
+          <BookCase
+            books={this.state.books}
+            shelves={this.state.bookShelves}
+            updateBook={this.updateBook}
+          />
+        </Route>
       </div>
     );
   }

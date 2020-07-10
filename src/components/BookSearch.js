@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// Components
+import BookShelf from "./BookShelf";
 
 import * as BooksAPI from "../BooksAPI";
 
@@ -15,13 +17,15 @@ export class BookSearch extends Component {
 
   handleChange = (query) => {
     this.setState(() => ({ query }));
-    this.getResults();
+    this.getResults(query);
   };
 
-  getResults = () => {
-    BooksAPI.search(this.state.query)
+  getResults = (query) => {
+    console.log("searching for... ", this.state.query, " ?");
+    BooksAPI.search(query)
       .then((books) => {
-        this.setState(() => ({ results: books }));
+        console.log(typeof books, books);
+        books && this.setState(() => ({ results: books }));
       })
       .catch((err) => console.error(err));
   };
@@ -52,6 +56,13 @@ export class BookSearch extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid" />
+          {this.state.results.length > 0 && this.state.results && (
+            <BookShelf
+              shelfName="Search Results:"
+              books={this.state.results}
+              updateBook={this.props.updateBook}
+            />
+          )}
         </div>
       </div>
     );
