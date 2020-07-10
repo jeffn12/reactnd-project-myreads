@@ -13,6 +13,8 @@ class BooksApp extends React.Component {
      * we're on, use the URL in the browser's address bar. This will ensure that
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
+     *
+     * TODO: (TL;DR) Implement React Router instead of state for showing the search page...
      */
     showSearchPage: false
   };
