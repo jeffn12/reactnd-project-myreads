@@ -28,7 +28,7 @@ export class BookShelf extends Component {
                 shelf={this.props.shelfName}
                 id={book.id}
                 updateBook={this.props.updateBook}
-                key={book.title}
+                key={book.id}
               />
             ))}
           </ol>
