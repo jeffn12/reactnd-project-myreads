@@ -8,9 +8,12 @@ import PropTypes from "prop-types";
  */
 
 const ShelfSelector = (props) => {
-  const getShelfName = () =>
-    props.shelf.charAt(0).toLowerCase() +
-    props.shelf.slice(1).replace(/ /g, "");
+  const getShelfName = () => {
+    let shelfName =
+      props.shelf.charAt(0).toLowerCase() +
+      props.shelf.slice(1).replace(/ /g, "");
+    return shelfName === "searchResults:" ? "none" : shelfName;
+  };
 
   return (
     <div className="book-shelf-changer">
