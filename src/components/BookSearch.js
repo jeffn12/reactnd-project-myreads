@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 /*
  *   BookSearch Class - component for the search page
@@ -10,11 +10,10 @@ export class BookSearch extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <Link to="/"><button
-            className="close-search"
-          >
-            Close
-          </button>
+          <Link to="/">
+            <button className="close-search">
+              Close
+            </button>
           </Link>
           <div className="search-books-input-wrapper">
             {/*
