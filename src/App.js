@@ -25,7 +25,7 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((res) => {
       const books = res.map((book) => ({
         title: book.title,
-        author: book.authors,
+        author: book.authors.join(", "),
         url: book.imageLinks.thumbnail,
         shelf: book.shelf
       }));
