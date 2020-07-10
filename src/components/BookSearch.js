@@ -33,21 +33,17 @@ export class BookSearch extends Component {
     query !== "" &&
       BooksAPI.search(query)
         .then((books) => {
-          console.log(books);
           books && !books.hasOwnProperty("error")
             ? this.setState(() => ({
-                results: books.map((book) => {
-                  console.log(book.imageLinks);
-                  return {
-                    title: book.title,
-                    author: book.authors
-                      ? book.authors.join(", ")
-                      : "No Author",
-                    url: book.imageLinks ? book.imageLinks.thumbnail : "",
-                    shelf: book.shelf || "none",
-                    id: book.id
-                  };
-                })
+                results: books.map((book) => ({
+                  title: book.title,
+                  author: book.authors ? book.authors.join(", ") : "No Author",
+                  url: book.imageLinks
+                    ? book.imageLinks.thumbnail
+                    : "No_Cover.jpg",
+                  shelf: book.shelf || "none",
+                  id: book.id
+                }))
               }))
             : this.setState(() => ({
                 results: []
