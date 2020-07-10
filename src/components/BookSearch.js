@@ -82,7 +82,7 @@ export class BookSearch extends Component {
             <BookShelf
               shelfName="Search Results:"
               books={this.state.results}
-              //updateBook={this.props.updateBook}
+              updateBook={this.props.updateBook}
             />
           )}
         </div>

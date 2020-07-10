@@ -15,8 +15,8 @@ class BooksApp extends React.Component {
 
   // API call to update a book to a new shelf, then refresh the book list to update state
   updateBook = (book, newShelf) => {
-    BooksAPI.update(book, newShelf);
-    this.refreshBookList();
+    console.log(`Updating ${book.id} --> ${newShelf}`);
+    BooksAPI.update(book, newShelf).then((res) => this.refreshBookList());
   };
 
   // Call the API to get the book list, then update state
@@ -25,8 +25,8 @@ class BooksApp extends React.Component {
       this.setState(() => ({
         books: res.map((book) => ({
           title: book.title,
-          author: book.authors.join(", "),
-          url: book.imageLinks.thumbnail,
+          author: book.authors ? book.authors.join(", ") : "",
+          url: book.imageLinks ? book.imageLinks.thumbnail : "No_Cover.jpg",
           shelf: book.shelf,
           id: book.id
         }))
@@ -46,7 +46,7 @@ class BooksApp extends React.Component {
           <h1>MyReads</h1>
         </div>
         <Route path="/search">
-          <BookSearch />
+          <BookSearch updateBook={this.updateBook} />
         </Route>
         <Route exact path="/">
           <BookCase
