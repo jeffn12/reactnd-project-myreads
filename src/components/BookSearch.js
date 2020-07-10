@@ -30,26 +30,31 @@ export class BookSearch extends Component {
   };
 
   getResults = (query) => {
-    query !== "" &&
-      BooksAPI.search(query)
-        .then((books) => {
-          books && !books.hasOwnProperty("error")
-            ? this.setState(() => ({
-                results: books.map((book) => ({
-                  title: book.title,
-                  author: book.authors ? book.authors.join(", ") : "No Author",
-                  url: book.imageLinks
-                    ? book.imageLinks.thumbnail
-                    : "No_Cover.jpg",
-                  shelf: book.shelf || "none",
-                  id: book.id
+    query !== ""
+      ? BooksAPI.search(query)
+          .then((books) => {
+            books && !books.hasOwnProperty("error")
+              ? this.setState(() => ({
+                  results: books.map((book) => ({
+                    title: book.title,
+                    author: book.authors
+                      ? book.authors.join(", ")
+                      : "No Author",
+                    url: book.imageLinks
+                      ? book.imageLinks.thumbnail
+                      : "No_Cover.jpg",
+                    shelf: book.shelf || "none",
+                    id: book.id
+                  }))
                 }))
-              }))
-            : this.setState(() => ({
-                results: []
-              }));
-        })
-        .catch((err) => console.error(err));
+              : this.setState(() => ({
+                  results: []
+                }));
+          })
+          .catch((err) => console.error(err))
+      : this.setState(() => ({
+          results: []
+        }));
   };
 
   render() {
