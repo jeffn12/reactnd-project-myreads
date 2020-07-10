@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 // Components
-import BookSearch from './components/BookSearch';
-import BookCase from './components/BookCase';
+import BookSearch from "./components/BookSearch";
+import BookCase from "./components/BookCase";
 
 // import * as BooksAPI from './BooksAPI'
-import './App.css';
+import "./App.css";
 
 class BooksApp extends React.Component {
   state = {
@@ -16,13 +16,18 @@ class BooksApp extends React.Component {
      *
      * TODO: (TL;DR) Implement React Router instead of state for showing the search page...
      */
-    showSearchPage: false
+    showSearchPage: false,
+    bookShelves: ["Currently Reading", "Want to Read", "Read"]
   };
 
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? <BookSearch /> : <BookCase />}
+        {this.state.showSearchPage ? (
+          <BookSearch />
+        ) : (
+          <BookCase shelves={this.state.bookShelves} />
+        )}
       </div>
     );
   }

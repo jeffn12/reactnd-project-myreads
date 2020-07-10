@@ -48,7 +48,7 @@ const books = [
 ];
 
 export class BookCase extends Component {
-  getBooks = (shelf) => books.filter((book) => shelf === book.shelf);
+  getBooks = (shelf) => books.filter((book) => shelf.shelf === book.shelf);
 
   render() {
     return (
@@ -58,15 +58,9 @@ export class BookCase extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <BookShelf
-              shelfName="Currently Reading"
-              books={this.getBooks("Currently Reading")}
-            />
-            <BookShelf
-              shelfName="Want to Read"
-              books={this.getBooks("Want to Read")}
-            />
-            <BookShelf shelfName="Read" books={this.getBooks("Read")} />
+            {this.props.shelves.map((shelf) => (
+              <BookShelf shelfName={shelf} books={this.getBooks({ shelf })} />
+            ))}
           </div>
         </div>
         <div className="open-search">
