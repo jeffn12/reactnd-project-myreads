@@ -20,14 +20,32 @@ export class BookSearch extends Component {
     this.getResults(query);
   };
 
+  // Parse the book results from JSON and return a usable array
+  parseBookInfo = (books) => {
+    let bookArray = [];
+    for (let book in books) {
+      bookArray = [...bookArray, books[book]];
+    }
+    return bookArray;
+  };
+
   getResults = (query) => {
-    console.log("searching for... ", this.state.query, " ?");
-    BooksAPI.search(query)
-      .then((books) => {
-        console.log(typeof books, books);
-        books && this.setState(() => ({ results: books }));
-      })
-      .catch((err) => console.error(err));
+    query !== "" &&
+      BooksAPI.search(query)
+        .then((books) => {
+          books &&
+            this.setState(() => ({
+              results: books.map((book) => ({
+                title: book.title,
+                author: book.authors.join(", "),
+                url: `"book.imageLinks.thumbnail"`,
+                shelf: book.shelf || "none",
+                id: book.id
+              }))
+            }));
+          console.log(this.state.results);
+        })
+        .catch((err) => console.error(err));
   };
 
   render() {
@@ -56,11 +74,11 @@ export class BookSearch extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid" />
-          {this.state.results.length > 0 && this.state.results && (
+          {this.state.results.length > 0 && (
             <BookShelf
               shelfName="Search Results:"
               books={this.state.results}
-              updateBook={this.props.updateBook}
+              //updateBook={this.props.updateBook}
             />
           )}
         </div>
