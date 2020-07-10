@@ -13,7 +13,10 @@ export class BookCase extends Component {
   };
 
   getBooks = (shelf) =>
-    this.props.books.filter((book) => true /* shelf.shelf === book.shelf */);
+    this.props.books.filter(
+      (book) =>
+        shelf.replace(/ /g, "").toLowerCase() === book.shelf.toLowerCase()
+    );
 
   render() {
     return (
@@ -23,7 +26,7 @@ export class BookCase extends Component {
             {this.props.shelves.map((shelf) => (
               <BookShelf
                 shelfName={shelf}
-                books={this.getBooks({ shelf })}
+                books={this.getBooks(shelf)}
                 key={shelf}
               />
             ))}

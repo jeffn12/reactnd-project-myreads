@@ -23,14 +23,13 @@ class BooksApp extends React.Component {
 
   componentDidMount = () => {
     BooksAPI.getAll().then((res) => {
-      const books = res.map((book) => ({
-        title: book.title,
-        author: book.authors.join(", "),
-        url: book.imageLinks.thumbnail,
-        shelf: book.shelf
-      }));
       this.setState(() => ({
-        books: books
+        books: res.map((book) => ({
+          title: book.title,
+          author: book.authors.join(", "),
+          url: book.imageLinks.thumbnail,
+          shelf: book.shelf
+        }))
       }));
     });
   };
