@@ -9,7 +9,9 @@ import BookShelf from "./BookShelf";
 
 export class BookCase extends Component {
   static propTypes = {
-    shelves: PropTypes.array.isRequired
+    shelves: PropTypes.array.isRequired,
+    books: PropTypes.array.isRequired,
+    updateBook: PropTypes.func.isRequired
   };
 
   getBooks = (shelf) =>
@@ -27,8 +29,8 @@ export class BookCase extends Component {
               <BookShelf
                 shelfName={shelf}
                 books={this.getBooks(shelf)}
-                key={shelf}
                 updateBook={this.props.updateBook}
+                key={shelf}
               />
             ))}
           </div>

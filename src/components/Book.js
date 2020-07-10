@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 // Components
 import ShelfSelector from "./ShelfSelector";
 
-import * as BooksAPI from "../BooksAPI";
-
 /*
  *   Book - functional component that represents an individual book
  */
@@ -33,9 +31,12 @@ const Book = (props) => {
 };
 
 Book.propTypes = {
-  url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired
+  author: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  shelf: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  updateBook: PropTypes.func.isRequired
 };
 
 export default Book;

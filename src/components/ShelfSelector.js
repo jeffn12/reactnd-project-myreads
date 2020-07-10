@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 /*
  *   ShelfSelector - functional component for choosing which shelf a book belongs on
@@ -27,6 +28,11 @@ const ShelfSelector = (props) => {
       </select>
     </div>
   );
+};
+
+ShelfSelector.propTypes = {
+  shelf: PropTypes.string.isRequired,
+  updateBook: PropTypes.func.isRequired
 };
 
 export default ShelfSelector;

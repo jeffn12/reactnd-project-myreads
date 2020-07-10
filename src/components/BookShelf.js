@@ -10,7 +10,8 @@ import Book from "./Book.js";
 export class BookShelf extends Component {
   static propTypes = {
     shelfName: PropTypes.string.isRequired,
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    updateBook: PropTypes.func.isRequired
   };
 
   render() {
@@ -26,8 +27,8 @@ export class BookShelf extends Component {
                 url={book.url}
                 shelf={this.props.shelfName}
                 id={book.id}
-                key={book.title}
                 updateBook={this.props.updateBook}
+                key={book.title}
               />
             ))}
           </ol>
