@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 // Components
 import BookShelf from "./BookShelf";
 
@@ -10,6 +11,10 @@ import * as BooksAPI from "../BooksAPI";
  */
 
 export class BookSearch extends Component {
+  static propTypes = {
+    updateBook: PropTypes.func.isRequired
+  };
+
   state = {
     query: "",
     results: []
