@@ -4,7 +4,7 @@ import React from "react";
  *   ShelfSelector - functional component for choosing which shelf a book belongs on
  */
 
-export default function ShelfSelector() {
+const ShelfSelector = () => {
   return (
     <div className="book-shelf-changer">
       <select>
@@ -18,4 +18,6 @@ export default function ShelfSelector() {
       </select>
     </div>
   );
-}
+};
+
+export default ShelfSelector;
