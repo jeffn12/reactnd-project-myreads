@@ -23,7 +23,15 @@ class BooksApp extends React.Component {
 
   componentDidMount = () => {
     BooksAPI.getAll().then((res) => {
-      console.log(res);
+      const books = res.map((book) => ({
+        title: book.title,
+        author: book.authors,
+        url: book.imageLinks.thumbnail,
+        shelf: book.shelf
+      }));
+      this.setState(() => ({
+        books: books
+      }));
     });
   };
 
@@ -33,7 +41,7 @@ class BooksApp extends React.Component {
         {this.state.showSearchPage ? (
           <BookSearch />
         ) : (
-          <BookCase shelves={this.state.bookShelves} />
+          <BookCase books={this.state.books} shelves={this.state.bookShelves} />
         )}
       </div>
     );
