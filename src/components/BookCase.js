@@ -59,7 +59,11 @@ export class BookCase extends Component {
         <div className="list-books-content">
           <div>
             {this.props.shelves.map((shelf) => (
-              <BookShelf shelfName={shelf} books={this.getBooks({ shelf })} />
+              <BookShelf
+                shelfName={shelf}
+                books={this.getBooks({ shelf })}
+                key={shelf}
+              />
             ))}
           </div>
         </div>

@@ -3,7 +3,7 @@ import React from "react";
 import BookSearch from "./components/BookSearch";
 import BookCase from "./components/BookCase";
 
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 
 class BooksApp extends React.Component {
@@ -17,7 +17,14 @@ class BooksApp extends React.Component {
      * TODO: (TL;DR) Implement React Router instead of state for showing the search page...
      */
     showSearchPage: false,
+    books: [],
     bookShelves: ["Currently Reading", "Want to Read", "Read"]
+  };
+
+  componentDidMount = () => {
+    BooksAPI.getAll().then((res) => {
+      console.log(res);
+    });
   };
 
   render() {
