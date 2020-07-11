@@ -83,6 +83,7 @@ export class BookSearch extends Component {
         <div className="search-books-results">
           {this.state.results.length > 0 && (
             <BookShelf
+              shelfName="none"
               books={this.state.results}
               updateBook={this.props.updateBook}
             />

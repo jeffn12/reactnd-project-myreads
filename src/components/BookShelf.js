@@ -10,7 +10,7 @@ import Book from "./Book.js";
 
 export class BookShelf extends Component {
   static propTypes = {
-    shelfName: PropTypes.string,
+    shelfName: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
     updateBook: PropTypes.func.isRequired
   };
@@ -18,7 +18,11 @@ export class BookShelf extends Component {
   render() {
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">{this.props.shelfName}</h2>
+        <h2 className="bookshelf-title">
+          {this.props.shelfName === "none"
+            ? "Search Results"
+            : this.props.shelfName}
+        </h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {this.props.books.map((book) => {
@@ -27,7 +31,7 @@ export class BookShelf extends Component {
                   title={book.title}
                   author={book.author}
                   url={book.url}
-                  shelf={book.shelf ? book.shelf : "none"}
+                  shelf={book.shelf}
                   id={book.id}
                   updateBook={this.props.updateBook}
                   key={book.id}
