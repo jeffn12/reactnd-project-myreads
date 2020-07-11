@@ -9,11 +9,11 @@ To jump right in and use the MyReads bookcase application:
 
 Your library is all ready to use, it should already have a few books in it.
 
-## Moving Books
+#### Moving Books
 
 Use the button in the bottom right of the book cover to open the shelf selector. The current shelf is highlighted. Clicking a new shelf name will move the book to that shelf.
 
-## Adding Books
+#### Adding Books
 
 Use the button in the bottom right of the app (it has a plus sign) to access the search menu. Type a query into the search bar, and available books will appear below. To add a book, use the button in the bottom right of the book cover to open the shelf selector. The current shelf is highlighted - if the book is not currently in your library, it is located on shelf "None". Select a different shelf from the list to add it to your library.
 
