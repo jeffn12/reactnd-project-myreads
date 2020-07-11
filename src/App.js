@@ -26,13 +26,7 @@ class BooksApp extends React.Component {
   refreshBookList = () => {
     BooksAPI.getAll().then((res) => {
       this.setState(() => ({
-        books: res.map((book) => ({
-          title: book.title,
-          author: book.authors ? book.authors.join(", ") : "", // leave author blank if there is no author(s) given
-          url: book.imageLinks ? book.imageLinks.thumbnail : "No_Cover.jpg", // use stock image if no cover thumbnail is given
-          shelf: book.shelf,
-          id: book.id
-        }))
+        books: res.map((book) => book)
       }));
     });
   };

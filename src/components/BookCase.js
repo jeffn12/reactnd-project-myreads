@@ -25,6 +25,7 @@ const BookCase = (props) => {
               shelfName={shelf}
               books={getBooks(shelf)}
               updateBook={props.updateBook}
+              getCurrentShelf={(book) => props.getCurrentShelf(book)}
               key={shelf}
             />
           ))}

@@ -28,11 +28,7 @@ export class BookShelf extends Component {
             {this.props.books.map((book) => {
               return (
                 <Book
-                  title={book.title}
-                  author={book.author}
-                  url={book.url}
-                  shelf={book.shelf}
-                  id={book.id}
+                  book={book}
                   updateBook={this.props.updateBook}
                   key={book.id}
                 />

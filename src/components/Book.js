@@ -16,26 +16,28 @@ const Book = (props) => {
           style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${props.url})`
+            backgroundImage: `url(${
+              props.book.imageLinks
+                ? props.book.imageLinks.thumbnail
+                : "No_Cover.jpg"
+            })`
           }}
         />
         <ShelfSelector
-          shelf={props.shelf}
-          updateBook={(newShelf) => props.updateBook(props, newShelf)}
+          shelf={props.book.shelf}
+          updateBook={(newShelf) => props.updateBook(props.book, newShelf)}
         />
       </div>
-      <div className="book-title">{props.title}</div>
-      <div className="book-authors">{props.author}</div>
+      <div className="book-title">{props.book.title}</div>
+      <div className="book-authors">
+        {props.book.authors ? props.book.authors.join(", ") : ""}
+      </div>
     </div>
   );
 };
 
 Book.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  shelf: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  book: PropTypes.object.isRequired,
   updateBook: PropTypes.func.isRequired
 };
 
