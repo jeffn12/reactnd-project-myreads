@@ -5,6 +5,7 @@ import ShelfSelector from "./ShelfSelector";
 
 /*
  *   Book - functional component that represents an individual book
+ *    -expects a book object and handles validation and information parsing within component
  */
 
 const Book = (props) => {
@@ -17,7 +18,7 @@ const Book = (props) => {
             width: 128,
             height: 193,
             backgroundImage: `url(${
-              props.book.imageLinks
+              props.book.imageLinks // If no thumbnail is provided, use stock image
                 ? props.book.imageLinks.thumbnail
                 : "No_Cover.jpg"
             })`
@@ -25,7 +26,7 @@ const Book = (props) => {
         />
         <ShelfSelector
           shelf={
-            props.book.shelf
+            props.book.shelf // Use the shelf if given, otherwise search the library for it
               ? props.book.shelf
               : props.getCurrentShelf(props.book)
           }
@@ -42,7 +43,8 @@ const Book = (props) => {
 
 Book.propTypes = {
   book: PropTypes.object.isRequired,
-  updateBook: PropTypes.func.isRequired
+  updateBook: PropTypes.func.isRequired,
+  getCurrentShelf: PropTypes.func.isRequired
 };
 
 export default Book;

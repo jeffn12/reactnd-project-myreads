@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 /*
  *   ShelfSelector - functional component for choosing which shelf a book belongs on
+ *    -it takes in a shelf name to highlight the appropriate option
  *
  */
 

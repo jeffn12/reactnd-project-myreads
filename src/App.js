@@ -22,7 +22,7 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, newShelf).then((res) => this.refreshBookList());
   };
 
-  // Call the API to get the book list, then update state
+  // Call the API to get the book list, then update state to an array of book objects
   refreshBookList = () => {
     BooksAPI.getAll().then((res) => {
       this.setState(() => ({
