@@ -22,17 +22,11 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, newShelf).then((res) => this.refreshBookList());
   };
 
-  // Call the API to get the book list, then update state
+  // Call the API to get the book list, then update state to an array of book objects
   refreshBookList = () => {
     BooksAPI.getAll().then((res) => {
       this.setState(() => ({
-        books: res.map((book) => ({
-          title: book.title,
-          author: book.authors ? book.authors.join(", ") : "", // leave author blank if there is no author(s) given
-          url: book.imageLinks ? book.imageLinks.thumbnail : "No_Cover.jpg", // use stock image if no cover thumbnail is given
-          shelf: book.shelf,
-          id: book.id
-        }))
+        books: res.map((book) => book)
       }));
     });
   };

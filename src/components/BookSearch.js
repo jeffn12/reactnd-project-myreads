@@ -35,17 +35,7 @@ export class BookSearch extends Component {
           .then((books) => {
             books && !books.hasOwnProperty("error")
               ? this.setState(() => ({
-                  results: books.map((book) => ({
-                    title: book.title,
-                    author: book.authors // If no authors are given, leave it blank
-                      ? book.authors.join(", ")
-                      : "",
-                    url: book.imageLinks // Use a stock image if none are given
-                      ? book.imageLinks.thumbnail
-                      : "No_Cover.jpg",
-                    shelf: this.getCurrentShelf(book), // Find out what shelf the book is assigned to
-                    id: book.id
-                  }))
+                  results: books.map((book) => book)
                 }))
               : this.setState(() => ({
                   results: []
@@ -86,6 +76,7 @@ export class BookSearch extends Component {
               shelfName="none"
               books={this.state.results}
               updateBook={this.props.updateBook}
+              getCurrentShelf={(book) => this.getCurrentShelf(book)}
             />
           )}
         </div>

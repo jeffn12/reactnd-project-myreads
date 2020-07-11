@@ -3,19 +3,15 @@ import PropTypes from "prop-types";
 
 /*
  *   ShelfSelector - functional component for choosing which shelf a book belongs on
+ *    -it takes in a shelf name to highlight the appropriate option
  *
  */
 
 const ShelfSelector = (props) => {
-  // Parse the shelf name to camel case for comparison
-  const getShelfName = () =>
-    props.shelf.charAt(0).toLowerCase() +
-    props.shelf.slice(1).replace(/ /g, "");
-
   return (
     <div className="book-shelf-changer">
       <select
-        value={getShelfName()}
+        value={props.shelf}
         onChange={(e) => props.updateBook(e.target.value)}
       >
         <option value="move" disabled>

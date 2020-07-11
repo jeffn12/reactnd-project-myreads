@@ -5,14 +5,15 @@ import Book from "./Book.js";
 
 /*
  *   BookShelf Class - component that represents a shelf in the bookcase.  A shelf holds the books that are associated with its category
- *      - the only category that does not get a shelf is "none"
+ *      - if the shelf label is "none" it is from the search results, and is given that shelf name
  */
 
 export class BookShelf extends Component {
   static propTypes = {
     shelfName: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
-    updateBook: PropTypes.func.isRequired
+    updateBook: PropTypes.func.isRequired,
+    getCurrentShelf: PropTypes.func.isRequired
   };
 
   render() {
@@ -28,12 +29,9 @@ export class BookShelf extends Component {
             {this.props.books.map((book) => {
               return (
                 <Book
-                  title={book.title}
-                  author={book.author}
-                  url={book.url}
-                  shelf={book.shelf}
-                  id={book.id}
+                  book={book}
                   updateBook={this.props.updateBook}
+                  getCurrentShelf={this.props.getCurrentShelf}
                   key={book.id}
                 />
               );
