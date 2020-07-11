@@ -24,7 +24,11 @@ const Book = (props) => {
           }}
         />
         <ShelfSelector
-          shelf={props.book.shelf}
+          shelf={
+            props.book.shelf
+              ? props.book.shelf
+              : props.getCurrentShelf(props.book)
+          }
           updateBook={(newShelf) => props.updateBook(props.book, newShelf)}
         />
       </div>

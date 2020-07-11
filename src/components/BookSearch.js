@@ -76,6 +76,7 @@ export class BookSearch extends Component {
               shelfName="none"
               books={this.state.results}
               updateBook={this.props.updateBook}
+              getCurrentShelf={(book) => this.getCurrentShelf(book)}
             />
           )}
         </div>

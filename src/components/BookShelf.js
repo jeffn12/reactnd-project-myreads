@@ -30,6 +30,7 @@ export class BookShelf extends Component {
                 <Book
                   book={book}
                   updateBook={this.props.updateBook}
+                  getCurrentShelf={this.props.getCurrentShelf}
                   key={book.id}
                 />
               );
