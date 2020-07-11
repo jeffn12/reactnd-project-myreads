@@ -8,13 +8,7 @@ import BookShelf from "./BookShelf";
  *   BookCase Class - component that represents the book shelf.  The bookcase holds multiple shelves.
  */
 
-export class BookCase extends Component {
-  static propTypes = {
-    shelves: PropTypes.array.isRequired,
-    books: PropTypes.array.isRequired,
-    updateBook: PropTypes.func.isRequired
-  };
-
+const BookCase = () => {
   // Get the books in library that belong on a given shelf
   getBooks = (shelf) =>
     this.props.books.filter(
@@ -46,5 +40,11 @@ export class BookCase extends Component {
     );
   }
 }
+
+BookCase.propTypes = {
+  shelves: PropTypes.array.isRequired,
+  books: PropTypes.array.isRequired,
+  updateBook: PropTypes.func.isRequired
+};
 
 export default BookCase;
