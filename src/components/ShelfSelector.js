@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 /*
  *   ShelfSelector - functional component for choosing which shelf a book belongs on
  *
- *  Note:  input selector is currently set to readOnly to alleviate browser warning
  */
 
 const ShelfSelector = (props) => {
