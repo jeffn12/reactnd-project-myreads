@@ -8,6 +8,7 @@ import * as BooksAPI from "../BooksAPI";
 
 /*
  *   BookSearch Class - component for the search page
+ *      -has state to track the search query and current results
  */
 
 export class BookSearch extends Component {
@@ -21,26 +22,28 @@ export class BookSearch extends Component {
     results: []
   };
 
+  // When the search query is updated, set the state and populate the results array
   handleChange = (query) => {
     this.setState(() => ({ query }));
     this.getResults(query);
   };
 
+  // Function to convert results JSON to a usable array of books
   getResults = (query) => {
-    query !== ""
+    query !== "" // Only run the search if there is actually a query
       ? BooksAPI.search(query)
           .then((books) => {
             books && !books.hasOwnProperty("error")
               ? this.setState(() => ({
                   results: books.map((book) => ({
                     title: book.title,
-                    author: book.authors
+                    author: book.authors // If no authors are given, leave it blank
                       ? book.authors.join(", ")
-                      : "No Author",
-                    url: book.imageLinks
+                      : "",
+                    url: book.imageLinks // Use a stock image if none are given
                       ? book.imageLinks.thumbnail
                       : "No_Cover.jpg",
-                    shelf: this.getCurrentShelf(book),
+                    shelf: this.getCurrentShelf(book), // Find out what shelf the book is assigned to
                     id: book.id
                   }))
                 }))
@@ -50,6 +53,7 @@ export class BookSearch extends Component {
           })
           .catch((err) => console.error(err))
       : this.setState(() => ({
+          // Set the results to an empty array if there is no query
           results: []
         }));
   };

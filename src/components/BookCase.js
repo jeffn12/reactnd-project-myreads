@@ -15,6 +15,7 @@ export class BookCase extends Component {
     updateBook: PropTypes.func.isRequired
   };
 
+  // Get the books in library that belong on a given shelf
   getBooks = (shelf) =>
     this.props.books.filter(
       (book) =>

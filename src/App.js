@@ -7,6 +7,9 @@ import BookCase from "./components/BookCase";
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 
+/**
+ * BooksApp Class - main component for the MyBooks app.  Controls the state of the library, names of the bookshelves, and routing
+ */
 class BooksApp extends React.Component {
   state = {
     books: [],
@@ -24,8 +27,8 @@ class BooksApp extends React.Component {
       this.setState(() => ({
         books: res.map((book) => ({
           title: book.title,
-          author: book.authors ? book.authors.join(", ") : "",
-          url: book.imageLinks ? book.imageLinks.thumbnail : "No_Cover.jpg",
+          author: book.authors ? book.authors.join(", ") : "", // leave author blank if there is no author(s) given
+          url: book.imageLinks ? book.imageLinks.thumbnail : "No_Cover.jpg", // use stock image if no cover thumbnail is given
           shelf: book.shelf,
           id: book.id
         }))
@@ -33,7 +36,7 @@ class BooksApp extends React.Component {
     });
   };
 
-  // When the component mounts, refresh the book list based on the server
+  // When the component mounts, refresh the book list by calling on the backend server
   componentDidMount = () => {
     this.refreshBookList();
   };
@@ -44,6 +47,7 @@ class BooksApp extends React.Component {
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
+
         <Route path="/search">
           <BookSearch books={this.state.books} updateBook={this.updateBook} />
         </Route>

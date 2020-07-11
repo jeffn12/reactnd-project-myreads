@@ -5,6 +5,7 @@ import Book from "./Book.js";
 
 /*
  *   BookShelf Class - component that represents a shelf in the bookcase.  A shelf holds the books that are associated with its category
+ *      - the only category that does not get a shelf is "none"
  */
 
 export class BookShelf extends Component {

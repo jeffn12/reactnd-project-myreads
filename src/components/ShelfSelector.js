@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
  */
 
 const ShelfSelector = (props) => {
+  // Parse the shelf name to camel case for comparison
   const getShelfName = () => {
     let shelfName =
       props.shelf.charAt(0).toLowerCase() +
