@@ -40,7 +40,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <div className="list-books-title">
-          <h1>MyReads</h1>
+          <h1>MyReads - Jeff's Library</h1>
         </div>
 
         <Route path="/search">
