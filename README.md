@@ -1,6 +1,7 @@
 # Getting Started
 
 To jump right in and use the MyReads bookcase application:
+(check it out on Heroku)[https://gentle-meadow-47878.herokuapp.com/]
 
 - run the command `npm install` in your terminal to install necessary dependencies (see below)
 - run the command `npm start` to start the development server and use the app in a browser
